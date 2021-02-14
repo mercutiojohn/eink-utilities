@@ -1,3 +1,9 @@
+.countdown-area {
+        width: 100%;
+        background: #fff;
+        /* height: 420px; */
+        margin-top: 50px;
+}
 .big-time {
         text-align: center;
         height: 100%;
@@ -9,7 +15,7 @@
         line-height: 210px;
 
 }
-#countdownDays{
+.countdown-days{
         text-align: center;
         height: 100%;
         /* float:left; */

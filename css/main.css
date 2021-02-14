@@ -20,10 +20,11 @@ a:active {
 
 }
 
-.first-row {
+.time-and-calendar-area {
     width: 100%;
     background: #fff;
-    /* height: 380px; */
+    height: 340px;
+    margin:50px 0 30px;
 }
 
 .expand-btn {
@@ -46,13 +47,13 @@ a:active {
     padding-top: 5px;
 }
 
-.second-row {
+.extensions-area {
     margin: 40px 0;
     width: 100%;
     /* margin-bottom: 40px; */
 }
 
-.second-row-container {
+.extensions-area-container {
     margin: 0 40px;
     border-radius: 20px;
     overflow: hidden;
@@ -138,7 +139,7 @@ a:active {
     width: 100%;
     /* font-weight: 800; */
     /* background: #555; */
-    margin: 50px 0 0 0;
+
 }
 .year-content,
 .month-content,
@@ -196,7 +197,7 @@ a:active {
     /* line-height: 40px; */
     /* font-size: 60px; */
     /* float: right; */
-    padding-left: 10px;
+    /* padding-left: 10px; */
     
     float: none;
     font-size: 220px;
@@ -215,27 +216,28 @@ a:active {
     STKai,
     STSong;
     font-size: 40px;
-    padding-top: 30px;
+    /* padding-top: 30px; */
 }
 
-
-/* 一言 */
-.hitokoto-container {
+.widgets-container{
     width: 100%;
     height: auto;
-    padding: 50px 0;
-
 }
-
-.hitokoto-border {
+.widgets-border {
     margin: 0 40px;
-    padding: 50px 10px;
     border: 2px #222 solid;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 250px;
+}
+/* 一言 */
+.hitokoto-contents {
+    padding: 50px 10px;
+    /* border: 2px #222 solid; */
     border-radius: 20px;
 }
 
-.hitokoto-container #hitokoto {
-
+.hitokoto-contents #hitokoto {
     font-family: Bookerly,
     QKB,
     STYuan,
@@ -246,41 +248,26 @@ a:active {
     height: 100px;
     line-height: 40px;
     vertical-align: middle;
+    /* color: #000; */
 }
 
-.hitokoto-container #from {
+.hitokoto-contents #from {
     /* width: 100%; */
     text-align: right;
     padding-right: 30px;
 }
 
 /* 微博热搜 */
-.weibo_container {
-    text-align: center;
-    /* height: 20%; */
-    /* margin: 1.25rem; */
-    font-size: 1.2rem;
-    margin: 40px 0 0 0;
-}
-
-ul {
+.hot_list ul {
 
     list-style: none;
     margin: 0;
     padding: 0;
 }
-
-.weibo_title {
-    font-family: QKB;
-    padding-bottom: 0.5rem;
-}
-
 .hot_list {
-    margin: 0 40px;
+    text-align: center;
+    font-size: 1.2rem;
     padding: 20px 0;
-    border: 2px #222 solid;
-    border-radius: 20px;
-
 }
 
 #hot_word,
@@ -318,63 +305,11 @@ ul {
 }
 
 /* 天气 */
-.weather_container {
-    padding: 5px 50px 20px 50px;
-    height: 40%;
-    text-align: center;
-    /* padding-bottom: 20px; */
-    margin: auto;
-}
-
-/* #weaTitle {
-    font-family: QKB;
-    font-size: 1.2rem;
-
-} */
-
-/* #weaImg {
-    display: inline-block;
-    margin-right: 2.5rem;
-}
-
-.iconfont {
-    font-size: 7.5rem;
-    width: 7.5rem;
-}
-
-#weaTemp {
-    display: inline-block;
-    margin-right: 2.5rem;
-}
-
-.tempNum {
-    display: inline-block;
-    font-size: 6.875rem;
-}
-
-.symbol {
-    display: inline-block;
-    font-size: 3rem;
-}
-
-#weaInfo {
-    display: inline-block;
-    font-size: 1rem;
-    line-height: 1.5rem;
-} */
-.weather-border {
-    /* padding: 0 50px !important; */
-    /* width: 100%; */
-}
-
 #he-plugin-standard {
-    margin-top:20px!important;
     padding: 10px 0 !important;
     height: 13rem !important;
     width: 100% !important;
-    border-radius: 20px !important;
-    border: 2px #222 solid;
-    background: #fff!important;
+    background: transparent!important;
 }
 
 .wv-lt-col-5 {
@@ -473,6 +408,18 @@ ul {
 }
 .wv-n-h-now-rain>a>img{
     width: 1.6rem!important;
+}
+.wv-a-alarm{
+    font-size: 20px !important;
+    background: #000!important;
+    text-decoration: none!important;
+}
+.wv-n-h-now-alarm{
+    position: static!important;
+    /* right: 0; */
+    padding: 0 0 5px 0!important;
+    margin-left: 0 !important;
+    
 }
 
 /* 单向历 */

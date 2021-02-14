@@ -134,7 +134,7 @@ li div {
   font-weight: 600;
   line-height: 3.75rem;
   position: absolute;
-  top: 2rem;
+  /* top: 2rem; */
   left: 2rem;
 }
 

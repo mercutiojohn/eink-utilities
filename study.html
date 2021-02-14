@@ -13,38 +13,32 @@
 
 <body>
 
-    <div class="first-row">
+    <div class="countdown-area">
         <!-- <button class="expand-btn"><img class="expand-icon" src="images/expand.png" alt=""></button> -->
         <div class="calendar">
-            <div id="timeContainer" hidden onclick="changeDisplay(this)" key="0">
-                <span class="block week-content" id="apm"></span>
-                <span class="block big-time" id="localtime"></span>
-                <div id="countDownTitle" style="color: white;">
-                    ·
-                    </span>
-                    <div id="others">
-                        <span style="color: white;">·</span>
-                        <span style="color: white;">·</span>
-                        <!-- <span hidden><span id="countdownSeconds"></span></span> -->
-                    </div>
-                </div>
-            </div>
+            
             <div id="countdownContainer" onclick="changeDisplay(this)" key="1">
                 <div id="countDownTitle">
                     距离考研
-                    </span>
-                    <div id="countdownDays">
-                    </div>
-                    <div id="countDownTitle">
-                        天
-                        </span>
-                        <div id="others">
-                            <span><span id="countdownHours"></span>小时</span>
-                            <span><span id="countdownMinutes"></span>分钟</span>
-                            <span hidden><span id="countdownSeconds"></span>秒</span>
-                        </div>
-                    </div>
                 </div>
+                <div id="countdownDays" class="countdown-days">
+                </div>
+                <div id="countDownTitle">
+                    天
+                </div>
+                
+            </div>
+            <div id="timeContainer" hidden onclick="changeDisplay(this)" key="0">
+                <span class="block week-content" id="apm"></span>
+                <span class="block big-time" id="localtime"></span>
+                <div id="countDownTitle">
+                    距离考研 <span id="countdownDaystwo"></span> 天
+                    </div>
+            </div>
+            <div id="others" style="color: white;">
+                <span><span id="countdownHours"></span>小时</span>
+                <span><span id="countdownMinutes"></span>分钟</span>
+                <span hidden><span id="countdownSeconds"></span>秒</span>
             </div>
             <span class="block year-content"><span id="year"></span> • <span id="month"></span> • <span id="day"></span>
                 / 周<span id="week"></span></span>
@@ -53,8 +47,8 @@
     </div>
 
 
-    <div class="second-row" id="extensions">
-        <div class="second-row-container">
+    <div class="extensions-area" id="extensions">
+        <div class="extensions-area-container">
             <a href="tomato.html" class="link-block">
                 <div class="padding" style="text-align:center;">
                     <!-- <img src="images/tomato.png" alt="" class="icon-wx"> -->
@@ -98,9 +92,11 @@
         switch (curr.getAttribute('key')) {
             case '0':
                 document.getElementById('countdownContainer').removeAttribute('hidden')
+                countdown()
                 break;
             case '1':
                 document.getElementById('timeContainer').removeAttribute('hidden')
+                countdown()
                 break;
             default:
                 break;
@@ -235,10 +231,10 @@
             M = H - shengyuM * 60 * 1000;//除去天、小时、分的毫秒数
         S = parseInt((shenyu - shengyuD * 60 * 60 * 24 * 1000 - shengyuH * 60 * 60 * 1000 - shengyuM * 60 * 1000) / 1000)//除去天、小时、分的毫秒数转化为秒
         document.getElementById("countdownDays").innerHTML = shengyuD;
+        document.getElementById("countdownDaystwo").innerHTML = shengyuD;
         document.getElementById("countdownHours").innerHTML = shengyuH;
         document.getElementById("countdownMinutes").innerHTML = shengyuM;
         document.getElementById("countdownSeconds").innerHTML = S;
-        // setTimeout("clock()",500);
         setTimeout(countdown, 500);
     }
     countdown()

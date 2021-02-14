@@ -12,7 +12,7 @@
 
 <body>
 
-    <div class="first-row">
+    <div class="time-and-calendar-area">
         <!-- <button class="expand-btn"><img class="expand-icon" src="images/expand.png" alt=""></button> -->
         <div class="block time-content" onclick="changeTopAreaDisplay(this)" key="1">
             <span class="block" id="apm"></span>
@@ -24,32 +24,43 @@
             <span class="block week-content">星期<span id="week"></span></span>
         </div>
     </div>
+
+    <div class="widgets-container">
+        <div class="widgets-border">
+            <div id="weather" onclick="changeBottomAreaDisplay(this)" key="1">
+            <div id="he-plugin-standard"></div></div>   
+            <div class="hitokoto-contents" hidden id="hitokotoCtn" hidden onclick="changeBottomAreaDisplay(this)" key="0">
+                <div id="hitokoto"></div>
+                <div id="from"></div>
+            </div>
+            <div class="hot_list" id="weibo" hidden onclick="changeBottomAreaDisplay(this)" key="2">
+                <ul id="hot_word"></ul>
+                <ul id="hot_word_num"></ul>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="weather-container" id="weather" onclick="changeBottomAreaDisplay(this)" key="1"> -->
+        <!-- <p id="weaTitle">当前天气</p> -->
+        <!-- <div class="weather-border">
+            <div id="he-plugin-standard"></div>
+        </div>
+    </div>
     <div class="hitokoto-container" id="hitokotoCtn" hidden onclick="changeBottomAreaDisplay(this)" key="0">
         <div class="hitokoto-border">
             <div id="hitokoto"></div>
             <div id="from"></div>
         </div>
     </div>
-    <div class="weather_container" id="weather" onclick="changeBottomAreaDisplay(this)" key="1">
-        <!-- <p id="weaTitle">当前天气</p> -->
-        <div class="weather-border">
-            <div id="he-plugin-standard"></div>
-
-        </div>
-    </div>
-
-
-    <div class="weibo_container" id="weibo" hidden onclick="changeBottomAreaDisplay(this)" key="2">
-        <!-- <div class="weibo_title">微博实时热搜</div> -->
+    
+    <div class="weibo-container" id="weibo" hidden onclick="changeBottomAreaDisplay(this)" key="2">
         <div class="hot_list">
             <ul id="hot_word"></ul>
             <ul id="hot_word_num"></ul>
         </div>
-        <img src="images/weibohot.png" alt="" class="weibo-hot-QR">
-    </div>
+    </div> -->
 
-<div class="second-row" id="extensions">
-        <div class="second-row-container">
+    <div class="extensions-area" id="extensions">
+        <div class="extensions-area-container">
             <a href="tomato.html" class="link-block" style="background-color: black;">
                 <div class="padding">
                     <img src="images/tomato.png" alt="" class="icon-wx">
@@ -65,8 +76,8 @@
         </div>
     </div>
 
-    <div class="second-row" id="links">
-        <div class="second-row-container">
+    <div class="extensions-area" id="links">
+        <div class="extensions-area-container">
             <a href="http://weread.qq.com" class="link-block">
                 <div class="padding">
                     <img src="images/wxread.png" alt="" class="icon-wx">
@@ -133,13 +144,13 @@
         curr.setAttribute('hidden', true)
         switch (curr.getAttribute('key')) {
             case '0':
-                document.getElementById('weather').removeAttribute('hidden')
-                break;
-            case '1':
                 document.getElementById('weibo').removeAttribute('hidden')
                 break;
-            case '2':
+            case '1':
                 document.getElementById('hitokotoCtn').removeAttribute('hidden')
+                break;
+            case '2':
+                document.getElementById('weather').removeAttribute('hidden')
                 break;
             default:
                 break;
@@ -149,7 +160,7 @@
         switch (curr.getAttribute('key')) {
             case '0':
                 // curr.setAttribute('key','1');
-                document.getElementsByClassName('year-content')[0].innerHTML ='<span id="year">2021</span>年<span id="month"></span>月</span ><span id="day"></span>日 星期<span id="week"></span>';
+                document.getElementsByClassName('year-content')[0].innerHTML ='<span id="year"></span> • <span id="month"></span> • </span ><span id="day"></span> / 星期<span id="week"></span>';
                 tick();
                 document.getElementsByClassName('day-content')[0].style.display = "none";
                 document.getElementsByClassName('week-content')[0].style.display = "none";
