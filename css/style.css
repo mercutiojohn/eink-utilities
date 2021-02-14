@@ -1,0 +1,215 @@
+body {
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+}
+
+@font-face {
+    font-family: "Mitype2018-90";
+    src: url("font/Mitype2018-90.otf");
+}
+
+@font-face {
+    font-family: "Mitype2018-80";
+    src: url("font/Mitype2018-80.otf");
+}
+
+@font-face {
+    font-family: "Mitype2018-70";
+    src: url("font/Mitype2018-70.otf");
+}
+
+@font-face {
+    font-family: "Mitype2018-60";
+    src: url("font/Mitype2018-60.otf");
+}
+
+@font-face {
+    font-family: "Mitype2018-50";
+    src: url("font/Mitype2018-50.otf");
+}
+
+@font-face {
+    font-family: "MitypeVF";
+    src: url("font/MitypeVF.ttf");
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background: #fff;
+}
+
+.skeleton {
+    background: #fff;
+    display: flex;
+    color: #fff;
+    height: 20vh;
+    align-items: center;
+    justify-content: center;
+    font-size: 20vh;
+    overflow: hidden;
+}
+
+.content {
+    /* display: block; */
+    white-space: nowrap;
+}
+
+#time {
+    /* font-family: "MitypeVF";
+    font-weight: 900; */
+    font-family: "Mitype2018-90";
+    font-size: 35vh;
+    height: 36vh;
+    background: #fff;
+    color: #000;
+}
+
+#date {
+
+    font-family: "MitypeVF";
+    font-weight: bold;
+    font-size: 18vh;
+    height: 19vh;
+    width: 80vw;
+    border-radius: 20px;
+    background: #888;
+    color: #fff;
+}
+
+#lunar {
+    font-size: 10vh;
+    height: 12vh;
+    /* background: #000; */
+    color: #000;
+}
+
+#info {
+    font-size: 8vh;
+    height: 12vh;
+    background: #ddd;
+    color: #000;
+}
+
+/* -------------------------------- */
+
+#adv-app {
+    display: flex;
+    /* flex-direction: column; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    height: 100vh;
+    /* height: 0; */
+    width: 100vw;
+    background: url("https://bing.rthe.net/wallpaper") no-repeat center;
+    background-size: cover;
+}
+
+#adv-wrap {
+    display: flex;
+    width: 100vw;
+    padding-top: 10vh;
+    padding: 10vh 6vh;
+}
+
+.adv-skeleton {
+    padding: 0 10px 0 10px;
+    display: flex;
+    color: #fff;
+    height: 10vh;
+    align-items: center;
+    /* justify-content: center; */
+    font-size: 20vh;
+    overflow: hidden;
+    /* width: 80vw; */
+    width: auto;
+}
+
+#adv-timezone {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+}
+
+#adv-time {
+    margin: 0 0 1vh 0;
+    padding-left: 0;
+    /* width: 40vh; */
+    border-radius: 20px;
+    /* font-family: "MitypeVF";
+    font-weight: 900; */
+    /* justify-content: center; */
+    align-items: center;
+    font-family: "Mitype2018-90";
+    font-size: 25vh;
+    height: 29vh;
+    /* background: #fff; */
+    /* color: #000; */
+    color: #fff;
+
+}
+
+#adv-date {
+    margin: 0 0 0 0;
+    font-family: "Mitype2018-50";
+    font-weight: bold;
+    font-size: 10vh;
+    /* height: 17vh; */
+    /* background: #888; */
+    color: #fff;
+    width: auto;
+}
+
+#adv-lunar {
+    margin: 0 0 0 0;
+    font-size: 5vh;
+    /* height: 5vh; */
+    /* background: #000; */
+    color: #fff;
+}
+
+#adv-info {
+    width: 100%;
+    height: 100%;
+    height: 80vh;
+    font-size: 8vh;
+    flex-direction: column;
+
+    margin-left: 10px;
+    margin-top: 30px;
+
+    /* height: 42vh; */
+    /* background: #ddd; */
+    /* color: #000; */
+    /* overflow: hidden; */
+    overflow: scroll;
+}
+
+.notify {
+    width: 80%;
+    margin-bottom: 10px;
+    padding: 10px 10px;
+    background-color: #ffffffaa;
+    background-color: #ffffff;
+    /* height: 100px; */
+    border-radius: 15px;
+    /* backdrop-filter: blur(15px); */
+    flex-shrink: 0;
+}
+
+h1 {
+    color: #000;
+    font-size: medium;
+    margin: 0;
+}
+
+p {
+    color: #000;
+    font-size: medium;
+    margin: 0;
+}

@@ -1,0 +1,53 @@
+.big-time {
+        text-align: center;
+        height: 100%;
+        /* float:left; */
+        font-size: 220px;
+        margin: auto;
+        font-family: numFont,Politica, Mitype2018-90, Bookerly, Palatino, Bahnschrift, Caecilia;
+        /* background: #eee; */
+        line-height: 210px;
+
+}
+#countdownDays{
+        text-align: center;
+        height: 100%;
+        /* float:left; */
+        font-size: 220px;
+        margin: auto;
+        font-family: numFont,
+        Mitype2018-90,
+        Bahnschrift,
+        Politica,
+        
+        Bookerly,
+        Palatino,
+        Bahnschrift,
+        Caecilia;
+        /* background: #eee; */
+        line-height: 210px;
+}
+#countDownTitle{
+        font-family: Bookerly,
+        QKB,
+        STYuan,
+        STKai,
+        STSong;
+        line-height: 70px;
+        font-size: 40px;
+        text-align: center;
+        margin: auto;
+}
+#others{
+    font-family: Bahnschrift,
+    Politica,
+    Mitype2018-90,
+    Bookerly,
+    Palatino,
+    Bahnschrift,
+    Caecilia;
+    line-height: 40px;
+    font-size: 20px;
+    text-align: center;
+    margin: auto;
+}

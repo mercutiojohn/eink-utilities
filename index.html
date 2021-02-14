@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kindle日历</title>
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/main.css">
+    <!-- <script src="js/vue.js"></script> -->
+</head>
+
+<body>
+
+    <div class="first-row">
+        <!-- <button class="expand-btn"><img class="expand-icon" src="images/expand.png" alt=""></button> -->
+        <div class="block time-content" onclick="changeTopAreaDisplay(this)" key="1">
+            <span class="block" id="apm"></span>
+            <span class="block" id="localtime"></span>
+        </div>
+        <div class="calendar" onclick="changeTopAreaDisplay(this)" key="0">
+            <span class="block year-content"><span id="year"></span> • <span id="month"></span>月</span>
+            <span class="block day-content"><span id="day"></span></span>
+            <span class="block week-content">星期<span id="week"></span></span>
+        </div>
+    </div>
+    <div class="hitokoto-container" id="hitokotoCtn" hidden onclick="changeBottomAreaDisplay(this)" key="0">
+        <div class="hitokoto-border">
+            <div id="hitokoto"></div>
+            <div id="from"></div>
+        </div>
+    </div>
+    <div class="weather_container" id="weather" onclick="changeBottomAreaDisplay(this)" key="1">
+        <!-- <p id="weaTitle">当前天气</p> -->
+        <div class="weather-border">
+            <div id="he-plugin-standard"></div>
+
+        </div>
+    </div>
+
+
+    <div class="weibo_container" id="weibo" hidden onclick="changeBottomAreaDisplay(this)" key="2">
+        <!-- <div class="weibo_title">微博实时热搜</div> -->
+        <div class="hot_list">
+            <ul id="hot_word"></ul>
+            <ul id="hot_word_num"></ul>
+        </div>
+        <img src="images/weibohot.png" alt="" class="weibo-hot-QR">
+    </div>
+
+<div class="second-row" id="extensions">
+        <div class="second-row-container">
+            <a href="tomato.html" class="link-block" style="background-color: black;">
+                <div class="padding">
+                    <img src="images/tomato.png" alt="" class="icon-wx">
+                    <span class="button-text" style="color: white;">番茄钟</span>
+                </div>
+            </a>
+            <a href="study.html" class="link-block">
+                <div class="padding" style="text-align:center;">
+                    <!-- <img src="images/wxread.png" alt="" class="icon-wx"> -->
+                    <span class="button-text">学习模式</span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="second-row" id="links">
+        <div class="second-row-container">
+            <a href="http://weread.qq.com" class="link-block">
+                <div class="padding">
+                    <img src="images/wxread.png" alt="" class="icon-wx">
+                    <span class="button-text">微信读书</span>
+                </div>
+            </a>
+            <a href="http://reabble.cn" class="link-block">
+                <div class="padding">
+                    <img src="images/reabble.png" alt="" class="icon-reabble">
+                    <span class="button-text">Reabble</span>
+                </div>
+            </a>
+            <a href="http://volmoe.com" class="link-block">
+                <div class="padding">
+                    <img src="images/volmoe.png" alt="" class="icon-volmoe">
+                </div>
+            </a>
+            <a href="http://www.iffeed.com/" class="link-block">
+                <div class="padding">
+                    <img src="images/iffeed.jpg" alt="" class="icon-reabble">
+                    <span class="button-text">iffeed</span>
+                </div>
+            </a>
+            <a href="http://cn.epubee.com/files.aspx" class="link-block">
+                <div class="padding">
+                    <img src="images/bee.png" alt="" class="icon-reabble">
+                    <span class="button-text">ePUBee管理</span>
+                </div>
+            </a>
+            <a href="http://cn.epubee.com/books" class="link-block">
+                <div class="padding">
+                    <img src="images/bee.png" alt="" class="icon-reabble">
+                    <span class="button-text">ePUBee搜书</span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    
+    <div class="bottom">
+        <script
+            type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1279658155'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1279658155%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+    </div>
+</body>
+<script>
+    WIDGET = {
+        CONFIG: {
+            "layout": 1,
+            // "width": document.documentElement.clientWidth - 100,
+            // "height": document.documentElement.clientHeight * 0.3,
+            "background": 5,
+            "dataColor": "000000",
+            "modules": "10",
+            "key": "64693255ade2459cbecabfd73bd6b9df",
+            "language": "auto"
+        }
+    }
+</script>
+<script src="https://widget.qweather.net/standard/static/js/he-standard-common.js?v=2.0"></script>
+
+<!-- <script src="js/main.js"></script> -->
+<script type="text/javascript">
+    function changeBottomAreaDisplay(curr) {
+        curr.setAttribute('hidden', true)
+        switch (curr.getAttribute('key')) {
+            case '0':
+                document.getElementById('weather').removeAttribute('hidden')
+                break;
+            case '1':
+                document.getElementById('weibo').removeAttribute('hidden')
+                break;
+            case '2':
+                document.getElementById('hitokotoCtn').removeAttribute('hidden')
+                break;
+            default:
+                break;
+        }
+    }
+    function changeTopAreaDisplay(curr){
+        switch (curr.getAttribute('key')) {
+            case '0':
+                // curr.setAttribute('key','1');
+                document.getElementsByClassName('year-content')[0].innerHTML ='<span id="year">2021</span>年<span id="month"></span>月</span ><span id="day"></span>日 星期<span id="week"></span>';
+                tick();
+                document.getElementsByClassName('day-content')[0].style.display = "none";
+                document.getElementsByClassName('week-content')[0].style.display = "none";
+                document.querySelector('.time-content').style.display ="block";
+                break;
+            case '1':
+                document.querySelector('.time-content').style.display = "none";
+                document.getElementsByClassName('year-content')[0].innerHTML = '<span id="year">2021</span> • <span id="month"></span>月';
+                tick();
+                document.getElementsByClassName('day-content')[0].style.display = "block";
+                document.getElementsByClassName('week-content')[0].style.display = "block";
+                break;
+            default:
+                break;
+        }
+    }
+    // 显示时间
+    function showTime(objD) {
+        var hh = objD.getHours();
+        if (hh < 10) hh = '0' + hh;
+        var mm = objD.getMinutes();
+        if (mm < 10) mm = '0' + mm;
+        var ss = objD.getSeconds();
+        if (ss < 10) ss = '0' + ss;
+        str = hh + ":" + mm;
+        return (str);
+    }
+    // 显示日期
+    function showDate(objD, option) {
+        var str, colorhead, colorfoot;
+        var yy = objD.getYear();
+        if (yy < 1900) yy = yy + 1900;
+        var MM = objD.getMonth() + 1;
+        var dd = objD.getDate();
+        if (dd < 10) dd = '0' + dd;
+        var ww = objD.getDay();
+        if (ww == 0) ww = "日";
+        if (ww == 1) ww = "一";
+        if (ww == 2) ww = "二";
+        if (ww == 3) ww = "三";
+        if (ww == 4) ww = "四";
+        if (ww == 5) ww = "五";
+        if (ww == 6) ww = "六";
+        if (option == 'y') {
+            str = yy;
+        } else if (option == 'm') {
+            str = MM;
+        } else if (option == 'd') {
+            str = dd;
+        } else if (option == 'w') {
+            str = ww;
+        } else {
+            str = yy + "-" + MM + "-" + dd + " " + ww;
+        }
+        return (str);
+    }
+
+    // 日期
+    function tick() {
+        var today;
+        today = new Date();
+        // document.getElementById("localtime").innerHTML = showTime(today);
+        // document.getElementById("localdate").innerHTML = showDate(today,'');
+        document.getElementById("year").innerHTML = showDate(today, 'y');
+        document.getElementById("month").innerHTML = showDate(today, 'm');
+        document.getElementById("day").innerHTML = showDate(today, 'd');
+        document.getElementById("week").innerHTML = showDate(today, 'w');
+        window.setTimeout("tick()", 60 * 1000);
+        // window.setTimeout("tick()", 1);
+    }
+    tick();
+    // 时钟模块
+    function clock() {
+        var date = new Date()
+        var utc8DiffMinutes = date.getTimezoneOffset() + 480
+        date.setMinutes(date.getMinutes() + utc8DiffMinutes)
+
+        var hour = date.getHours()
+
+        var apm = '上午'
+        if (hour > 12) {
+            apm = '下午'
+            hour -= 12
+        }
+
+        var timeString = hour + ':' + ('0' + date.getMinutes()).slice(-2)
+        var dateString = (date.getMonth() + 1) + '月' + date.getDate() + '日'
+        var weekList = ['日', '一', '二', '三', '四', '五', '六']
+        var weekString = '星期' + weekList[date.getDay()]
+
+        document.getElementById('apm').innerHTML = apm
+        document.getElementById("localtime").innerHTML = timeString
+        // document.getElementById("date").innerHTML = dateString + " " + weekString
+    }
+
+    clock()
+
+    setInterval("clock()", 60 * 1000)
+
+</script>
+<script>
+    function createXHR() {
+        var xhr = null;
+        if (window.XMLHttpRequest) {
+            xhr = new XMLHttpRequest();
+        } else if (window.ActiveXObject) {
+            xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        return xhr;
+    }
+
+    // 一言模块
+    function hitokoto() {
+        var xhr = createXHR();
+        xhr.open('GET', 'https://v1.hitokoto.cn?encode=json&charset=utf-8', true);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                var data = JSON.parse(this.responseText)
+                document.getElementById('hitokoto').innerHTML = data.hitokoto
+                document.getElementById('from').innerHTML = data.from_who ? "—— " + data.from + " " + data.from_who + "" : "—— " + data.from + ""
+            }
+        }
+        xhr.send(null);
+    }
+
+    hitokoto();
+    setInterval("hitokoto()", 60 * 1000 * 60);
+    // setInterval("hitokoto()", 1000 * 30);
+    // 微博热搜模块
+    function weibo() {
+        var xhr = createXHR();
+        xhr.open("GET", "https://v1.alapi.cn/api/new/wbtop?num=5", true);
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4) {
+                var data = JSON.parse(this.responseText);
+                var hots = data.data;
+                var hot_word = document.getElementById("hot_word");
+                var hot_word_num = document.getElementById("hot_word_num");
+                if (data.code == 429) {
+                    hot_word.innerHTML = data.msg;
+                } else {
+                    hot_word.innerHTML = "";
+                    hot_word_num.innerHTML = "";
+                    for (var i = 0; i < hots.length; i++) {
+                        var index = i + 1;
+                        hot_word.innerHTML += "<li>" + index + " " + hots[i].hot_word + "</li>";
+                        hot_word_num.innerHTML += "<li>" + hots[i].hot_word_num + "</li>";
+                    }
+                }
+            }
+        };
+        xhr.send(null);
+    }
+
+    weibo();
+    setInterval("weibo()", 60 * 1000 * 20);
+    // setInterval("weibo()", 1000 * 60);
+    // function oneway() {
+    //     var serverUrlBase = "http://img.owspace.com/Public/uploads/Download/";
+    //     var today = new Date();
+    //     var year = today.getFullYear();
+    //     var month = today.getMonth() + 1;
+    //     var day = today.getDate();
+    //     if (month < 10) month = '0' + month;
+    //     if (day < 10) day = '0' + day;
+    //     var url = serverUrlBase + year + "/" + month + day + ".jpg";
+    //     document.getElementById('oneWayUrl').setAttribute('href', url);
+    // }
+    // oneway()
+</script>
+
+
+</html>

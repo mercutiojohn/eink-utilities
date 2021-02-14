@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>clock</title>
+    <link href="https://fonts.font.im/css2?family=Julius+Sans+One" rel="stylesheet">
+    <style>
+        /* default: do nothing*/
+        .style-0 {}
+
+        /* style 1: hide weather widget */
+        .style-1 #he-plugin-standard {
+            display: none;
+        }
+
+        /* style 2: hide weather widget, rotate 90deg,larger text */
+        .style-2 {
+            -webkit-transform: rotate(90deg);
+        }
+
+        .style-2 #he-plugin-standard {
+            display: none;
+        }
+
+        .style-2 #time {
+            font-size: 13rem;
+        }
+    </style>
+    <style>
+        body {
+            color: #000000;
+            background-color: #ffffff;
+            margin: 0;
+        }
+
+        .page {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            font-family: 'Julius Sans One', sans-serif;
+        }
+
+        .flash #he-plugin-standard {
+            display: none;
+        }
+
+        #time,
+        #date {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            margin: auto;
+            text-align: center;
+        }
+
+        #time {
+            top: 0;
+            height: 40%;
+            font-size: 10rem;
+
+            font-weight: 700;
+        }
+
+        #date {
+            height: 30%;
+            font-size: 5rem;
+        }
+
+        /* adjust weather width */
+        #he-plugin-standard {
+            margin: auto !important;
+        }
+
+        .wv-lt-location {
+            text-align: center !important;
+        }
+
+        .wv-lt-location span {
+            font-size: 2rem !important;
+        }
+
+        .wv-lt-location a {
+            font-size: 1rem !important;
+        }
+
+        img {
+            width: 7rem !important;
+            margin: 0 !important;
+        }
+
+        .wv-n-h-now-img {
+            text-align: center !important;
+        }
+
+        .wv-v-h-row {
+            display: flex;
+            display: -webkit-box;
+        }
+
+        .wv-v-h-location {
+            width: 33% !important;
+            margin-top: 3em;
+        }
+
+        .wv-v-h-col-left {
+            width: 66% !important;
+        }
+
+        .wv-lt-refresh,
+        .wv-n-h-now-alarm,
+        .wv-n-h-now-rain,
+        .wv-n-h-now-txt {
+            display: none !important;
+        }
+
+        .wv-v-h-now {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .wv-n-h-now-tmp {
+            font-size: 3rem !important;
+        }
+
+        .wv-top-select,
+        .wv-top-button {
+            width: 100% !important;
+        }
+
+        .wv-top-col-3-c {
+            margin: 10px !important;
+        }
+
+        .wv-n-h-now-content {
+            text-align: center;
+            width: 50% !important;
+        }
+
+        .wv-lt-col-7 {
+            width: 100% !important;
+        }
+
+        /* adjust weather width end */
+    </style>
+</head>
+
+<body>
+
+    <div class="page style-0" id="page">
+        <div class="time" id="time" onclick="changeStyle()"></div>
+        <div class="date" id="date" onclick="pause()"></div>
+
+        <!-- weather widget from  https://cj.weather.com.cn/ -->
+        <div id="he-plugin-standard"></div>
+        <script>
+            WIDGET = {
+                CONFIG: {
+                    "layout": 1,
+                    "width": document.documentElement.clientWidth * 0.7,
+                    "height": document.documentElement.clientHeight * 0.3,
+                    "background": 5,
+                    "dataColor": "000000",
+                    "modules": "10",
+                    "key": "1W26JbTAJH",
+                    "language": "auto"
+                }
+            }
+        </script>
+        <script src="https://apip.weatherdt.com/standard/static/js/weather-standard-common.js?v=2.0"></script>
+        <!-- weather widget end -->
+    </div>
+
+
+    <script>
+        var last_time;
+        var last_flash;
+        var interval_id;
+        var style = 0;
+        const timeDiv = document.getElementById("time");
+        const dateDiv = document.getElementById("date");
+        const pageDiv = document.getElementById("page");
+        const halt = "HALT";
+
+        function pause() {
+            if (timeDiv.innerHTML == halt) {
+                last_time = 0;
+                updateTime()
+                interval_id = setInterval("updateTime()", 1 * 1000)
+            } else {
+                clearInterval(interval_id);
+                timeDiv.innerHTML = halt;
+            }
+        }
+        function setTimeAndDateWidgetHeight(base, timeHeight, dateHeight) {
+            timeDiv.style.height = base * timeHeight + "px";
+            timeDiv.style.lineHeight = base * timeHeight + "px";
+            dateDiv.style.height = base * dateHeight + "px";
+            dateDiv.style.lineHeight = base * dateHeight + "px";
+        }
+        function changeStyle() {
+            var clientHeight = document.documentElement.clientHeight;
+            var clientWidth = document.documentElement.clientWidth;
+            switch (style) {
+                case 1:
+                    pageDiv.classList.add('style-1');
+                    pageDiv.style.left = 0;
+                    setTimeAndDateWidgetHeight(clientHeight, 0.7, 0.3);
+                    style++;
+                    break;
+                case 2:
+                    pageDiv.classList.remove('style-2');
+                    pageDiv.classList.add('style-2');
+                    pageDiv.style.left = -((clientHeight - clientWidth) / 2) + 'px';
+                    setTimeAndDateWidgetHeight(clientWidth, 0.7, 0.3);
+                    style++;
+                    break;
+                default:
+                    pageDiv.classList.remove('style-1');
+                    pageDiv.classList.remove('style-2');
+                    pageDiv.style.left = 0;
+                    setTimeAndDateWidgetHeight(clientHeight, 0.4, 0.3)
+                    style = 1;
+            }
+        }
+        changeStyle();
+
+        function fontSizeAutoChange() {
+            var clientHeight = document.documentElement.clientHeight;
+            var clientWidth = document.documentElement.clientWidth;
+            document.documentElement.style.fontSize = (clientHeight / 40) + "px";
+        }
+        fontSizeAutoChange();
+        window.onresize = fontSizeAutoChange;
+
+        function getQueryVariable(variable) {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split("=");
+                if (pair[0] == variable) { return pair[1]; }
+            }
+            return (false);
+        }
+
+        function updateTime() {
+            var date = new Date()
+            var timezone = getQueryVariable("timezone") ? getQueryVariable("timezone") : 8
+            var utc8DiffMinutes = date.getTimezoneOffset() + timezone * 60;
+            date.setMinutes(date.getMinutes() + utc8DiffMinutes);
+            if (date.getMinutes() == 0 && date.getHours() != last_flash) {
+                last_flash = date.getHours();
+                flash();
+            }
+            var timeString = date.getHours() + ':' + ('0' + date.getMinutes()).slice(-2)
+            var dateString = (date.getMonth() + 1) + '/' + date.getDate()
+            var weekList = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
+            var weekString = weekList[date.getDay()]
+            if (last_time != timeString) {
+                timeDiv.innerHTML = timeString
+                dateDiv.innerHTML = dateString + ' ' + weekString
+            }
+            last_time = timeString;
+        }
+        updateTime()
+        interval_id = setInterval("updateTime()", 60000)
+
+        function flash() {
+            document.body.style.backgroundColor = '#000';
+            pageDiv.classList.add('flash');
+            setTimeout("page.classList.remove('flash');document.body.style.backgroundColor = '#FFF';", 1000)
+        }
+    </script>
+</body>
+
+</html>

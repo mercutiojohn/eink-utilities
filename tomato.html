@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>番茄钟</title>
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/tomato.css">
+    <link rel="stylesheet" href="css/iconfont/iconfont.css">
+    <!-- <script src="js/vue.js"></script> -->
+</head>
+
+<body style="background-color: #000;">
+    <div class="tomato">
+        <!-- <button class="expand-btn"><img class="expand-icon" src="images/expand-w.png" alt=""></button> -->
+        <!-- <p id="description">番茄钟·<span id="desc">25</span>分钟</p> -->
+        <p id="countDownArea">00:25:00</p>
+        <p id="functions">
+            <input type="button" value="&#xe612;" class="buttons" id="settingBtn">
+            <input type="button" value="&#xe6da;" class="buttons" id="pause" hidden>
+            <input type="button" value="&#xe6de;" class="buttons" id="start">
+            <input type="button" value="&#xe633;" class="buttons" id="reset">
+        </p>
+        <div id="settingArea" hidden>
+            <p id="functions">
+                <input type="text" id="duration" class="tarea" value="25"><span style="padding-left: 10px;">分钟</span> 
+                <input type="button" value="&#xe72a;" class="buttons" id="closeSettingBtn">
+                <input type="button" value="&#xe73e;" class="buttons" id="setDuration">
+            </p>
+        </div>
+    </div>
+    <div class="bottom">
+        <script
+            type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1279658155'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1279658155%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+    </div>
+</body>
+<script>
+    window.onload = function () {
+        var oBtnStart = document.getElementById('start');
+        var oBtnPause = document.getElementById('pause');
+        var oBtnReset = document.getElementById('reset');
+        var oBtnSetting = document.getElementById('settingBtn');
+        var oBtnCloseSetting = document.getElementById('closeSettingBtn');
+
+        var oTextDuration = document.getElementById('duration');
+        var oBtnSetDuration = document.getElementById('setDuration');
+        var oCountDownArea = document.getElementById('countDownArea');
+        var oSettingArea = document.getElementById('settingArea');
+
+        // var oDesc = document.getElementById('desc');
+        var defaultDuration = 25 * 60 * 1000;
+        var timer = null;
+        var now = 0;
+
+        oBtnStart.onclick = function () {
+            document.body.style.background = "#000";
+
+            oBtnStart.setAttribute('hidden', true);
+            oBtnPause.removeAttribute('hidden');
+            clearInterval(timer);
+            now = Date.now();
+            oCountDownArea.innerHTML = beautyTime(defaultDuration);
+            timer = setInterval(function () {
+                var newNow = Date.now();
+                var timeDelay = defaultDuration - (newNow - now);
+                if (timeDelay <= 0) {
+                    clearInterval(timer);
+                    oCountDownArea.innerHTML = "00:00:00";
+                    document.body.style.background = "#555";
+                    oBtnPause.setAttribute('hidden', true);
+                    oBtnStart.removeAttribute('hidden');
+                    return;
+                }
+                oCountDownArea.innerHTML = beautyTime(timeDelay);
+            }, 500);
+        }
+
+        oBtnPause.onclick = function () {
+            oBtnPause.setAttribute('hidden', true);
+            oBtnStart.removeAttribute('hidden');
+            clearInterval(timer);
+            // document.body.style.background = "#555";
+
+        }
+
+        oBtnReset.onclick = function () {
+            document.body.style.background = "#000";
+            oBtnPause.setAttribute('hidden', true);
+            oBtnStart.removeAttribute('hidden');
+            clearInterval(timer);
+            defaultDuration = 25 * 60 * 1000;
+            oCountDownArea.innerHTML = beautyTime(defaultDuration);
+        }
+        oBtnSetting.onclick = function () {
+            oSettingArea.removeAttribute('hidden');
+        }
+
+        //you can set the duration manually
+        oBtnSetDuration.onclick = function () {
+            clearInterval(timer);
+            defaultDuration = parseInt(oTextDuration.value) * 60 * 1000;
+            oCountDownArea.innerHTML = beautyTime(defaultDuration);
+            // oDesc.innerHTML = parseInt((defaultDuration % 3600000) / 60000);
+            oSettingArea.setAttribute('hidden', true);
+
+
+        }
+
+        oBtnCloseSetting.onclick = function () {
+            oSettingArea.setAttribute('hidden', true);
+        }
+        // 美化时间
+        function beautyTime(time) {
+            var hour = parseInt(time / 3600000);
+            var min = parseInt((time % 3600000) / 60000);
+            var sec = parseInt((time % 60000) / 1000);
+            var other = time - hour * 3600000 - min * 60000 - sec * 1000;
+            if (hour < 10) hour = '0' + hour;
+            if (min < 10) min = '0' + min;
+            if (sec < 10) sec = '0' + sec;
+            return hour + ":" + min + ":" + sec;
+        }
+
+    }   
+</script>
+
+</html>

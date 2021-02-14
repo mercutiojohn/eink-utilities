@@ -1,0 +1,89 @@
+
+body{
+    padding: 0;
+    margin: 0;
+}
+.tomato {
+    padding-bottom: 10px;
+}
+
+#countDownArea {
+    display: block;
+    padding: 0 0 20px 0;
+    margin: 0;
+    text-align: center;
+    line-height: 420px;
+    font-size: 120px;
+    color: #fff;
+    font-family: numFont,Bahnschrift,
+        Palatino,
+        Caecilia,
+        Bookerly, "Times New Roman";
+    /* font-weight: 800; */
+}
+
+#description {
+    color: #fff;
+    /* text-align: center; */
+    padding: 10px;
+
+}
+
+
+
+
+.tarea {
+    border: 2px solid #fff;
+    background: transparent;
+    color: white;
+    /* font-size: 30px; */
+    text-align: center;
+    border-radius: 0px;
+    padding: 10px 20px;
+    width: 100px;
+    border-radius: 5px;
+
+}
+
+
+
+#functions {
+    font-size: 30px;
+    text-align: center;
+    color: #fff;
+}
+
+.buttons {
+    /* border: 2px solid #fff; */
+    /* border: 2px solid #000; */
+    border: none;
+    background: none;
+    color: white;
+    border-radius: 5px;
+    padding: 20px 30px;
+    font-family: 'iconfont' !important;
+    font-size: 30px;
+}
+#pause,
+#start{
+    /* border: 2px solid #000; */
+    border-radius: 50%;
+    width: 100px;
+    height:100px;
+    background: #fff;
+    color: #000;
+    font-size: 2.2rem;
+    margin: 0 20px;
+}
+#start:active {
+    background: #000;
+    color: #fff;
+}
+.buttons:active {
+    background: #fff;
+    color: #000;
+
+}
+#settingArea{
+    /* opacity: 0; */
+}

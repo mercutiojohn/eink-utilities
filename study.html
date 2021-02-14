@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学习模式</title>
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/countdown.css">
+    <!-- <script src="js/vue.js"></script> -->
+</head>
+
+<body>
+
+    <div class="first-row">
+        <!-- <button class="expand-btn"><img class="expand-icon" src="images/expand.png" alt=""></button> -->
+        <div class="calendar">
+            <div id="timeContainer" hidden onclick="changeDisplay(this)" key="0">
+                <span class="block week-content" id="apm"></span>
+                <span class="block big-time" id="localtime"></span>
+                <div id="countDownTitle" style="color: white;">
+                    ·
+                    </span>
+                    <div id="others">
+                        <span style="color: white;">·</span>
+                        <span style="color: white;">·</span>
+                        <!-- <span hidden><span id="countdownSeconds"></span></span> -->
+                    </div>
+                </div>
+            </div>
+            <div id="countdownContainer" onclick="changeDisplay(this)" key="1">
+                <div id="countDownTitle">
+                    距离考研
+                    </span>
+                    <div id="countdownDays">
+                    </div>
+                    <div id="countDownTitle">
+                        天
+                        </span>
+                        <div id="others">
+                            <span><span id="countdownHours"></span>小时</span>
+                            <span><span id="countdownMinutes"></span>分钟</span>
+                            <span hidden><span id="countdownSeconds"></span>秒</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <span class="block year-content"><span id="year"></span> • <span id="month"></span> • <span id="day"></span>
+                / 周<span id="week"></span></span>
+            <span class="block year-content"><span id="localtime"></span></span>
+        </div>
+    </div>
+
+
+    <div class="second-row" id="extensions">
+        <div class="second-row-container">
+            <a href="tomato.html" class="link-block">
+                <div class="padding" style="text-align:center;">
+                    <!-- <img src="images/tomato.png" alt="" class="icon-wx"> -->
+                    <span class="button-text">番茄钟</span>
+                </div>
+            </a>
+            <a href="index.html" class="link-block">
+                <div class="padding" style="text-align:center;">
+                    <!-- <img src="images/wxread.png" alt="" class="icon-wx"> -->
+                    <span class="button-text">主页</span>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="bottom">
+        <script
+            type="text/javascript">document.write(unescape("%3Cspan id='cnzz_stat_icon_1279658155'%3E%3C/span%3E%3Cscript src='https://s4.cnzz.com/z_stat.php%3Fid%3D1279658155%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+    </div>
+</body>
+
+<script>
+    // WIDGET = {
+    //     CONFIG: {
+    //         "layout": 1,
+    //         // "width": document.documentElement.clientWidth - 100,
+    //         // "height": document.documentElement.clientHeight * 0.3,
+    //         "background": 5,
+    //         "dataColor": "000000",
+    //         "modules": "10",
+    //         "key": "64693255ade2459cbecabfd73bd6b9df",
+    //         "language": "auto"
+    //     }
+    // }
+</script>
+<!-- <script src="https://widget.qweather.net/standard/static/js/he-standard-common.js?v=2.0"></script> -->
+
+<!-- <script src="js/main.js"></script> -->
+<script type="text/javascript">
+    function changeDisplay(curr) {
+        curr.setAttribute('hidden', true)
+        switch (curr.getAttribute('key')) {
+            case '0':
+                document.getElementById('countdownContainer').removeAttribute('hidden')
+                break;
+            case '1':
+                document.getElementById('timeContainer').removeAttribute('hidden')
+                break;
+            default:
+                break;
+        }
+    }
+    // 显示时间
+    function showTime(objD) {
+        var hh = objD.getHours();
+        if (hh < 10) hh = '0' + hh;
+        var mm = objD.getMinutes();
+        if (mm < 10) mm = '0' + mm;
+        var ss = objD.getSeconds();
+        if (ss < 10) ss = '0' + ss;
+        str = hh + ":" + mm;
+        return (str);
+    }
+    // 显示日期
+    function showDate(objD, option) {
+        var str, colorhead, colorfoot;
+        var yy = objD.getYear();
+        if (yy < 1900) yy = yy + 1900;
+        var MM = objD.getMonth() + 1;
+        var dd = objD.getDate();
+        if (dd < 10) dd = '0' + dd;
+        var ww = objD.getDay();
+        if (ww == 0) ww = "日";
+        if (ww == 1) ww = "一";
+        if (ww == 2) ww = "二";
+        if (ww == 3) ww = "三";
+        if (ww == 4) ww = "四";
+        if (ww == 5) ww = "五";
+        if (ww == 6) ww = "六";
+        if (option == 'y') {
+            str = yy;
+        } else if (option == 'm') {
+            str = MM;
+        } else if (option == 'd') {
+            str = dd;
+        } else if (option == 'w') {
+            str = ww;
+        } else {
+            str = yy + "-" + MM + "-" + dd + " " + ww;
+        }
+        return (str);
+    }
+
+    // 走时间
+    function tick() {
+        var today;
+        today = new Date();
+        // document.getElementById("localtime").innerHTML = showTime(today);
+        // document.getElementById("localdate").innerHTML = showDate(today,'');
+        document.getElementById("year").innerHTML = showDate(today, 'y');
+        document.getElementById("month").innerHTML = showDate(today, 'm');
+        document.getElementById("day").innerHTML = showDate(today, 'd');
+        document.getElementById("week").innerHTML = showDate(today, 'w');
+        window.setTimeout("tick()", 1000);
+    }
+    tick();
+    // 时钟模块
+    function clock() {
+        var date = new Date()
+        var utc8DiffMinutes = date.getTimezoneOffset() + 480
+        date.setMinutes(date.getMinutes() + utc8DiffMinutes)
+
+        var hour = date.getHours()
+
+        var apm = '上午'
+        if (hour > 12) {
+            apm = '下午'
+            hour -= 12
+        }
+
+        var timeString = hour + ':' + ('0' + date.getMinutes()).slice(-2)
+        var dateString = (date.getMonth() + 1) + '月' + date.getDate() + '日'
+        var weekList = ['日', '一', '二', '三', '四', '五', '六']
+        var weekString = '星期' + weekList[date.getDay()]
+
+        document.getElementById('apm').innerHTML = apm
+        document.getElementById("localtime").innerHTML = timeString
+        // document.getElementById("date").innerHTML = dateString + " " + weekString
+    }
+
+    clock()
+
+    setInterval("clock()", 60 * 1000)
+
+</script>
+<script>
+    function createXHR() {
+        var xhr = null;
+        if (window.XMLHttpRequest) {
+            xhr = new XMLHttpRequest();
+        } else if (window.ActiveXObject) {
+            xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        return xhr;
+    }
+
+    // 一言模块
+    // function hitokoto() {
+    //     var xhr = createXHR();
+    //     xhr.open('GET', 'https://v1.hitokoto.cn?encode=json&charset=utf-8', true);
+    //     xhr.onreadystatechange = function () {
+    //         if (this.readyState == 4) {
+    //             var data = JSON.parse(this.responseText)
+    //             document.getElementById('hitokoto').innerHTML = data.hitokoto
+    //             document.getElementById('from').innerHTML = data.from_who ? "—— " + data.from + " " + data.from_who + "" : "—— " + data.from + ""
+    //         }
+    //     }
+    //     xhr.send(null);
+    // }
+
+    // hitokoto();
+    // setInterval("hitokoto()", 60 * 1000 * 60);
+
+    function countdown() {
+        var today = new Date(),//当前时间
+            h = today.getHours(),
+            m = today.getMinutes(),
+            s = today.getSeconds();
+        var stopTime = new Date("Dec 22 2021 00:00:00"),//结束时间
+            stopH = stopTime.getHours(),
+            stopM = stopTime.getMinutes(),
+            stopS = stopTime.getSeconds();
+        var shenyu = stopTime.getTime() - today.getTime(),//倒计时毫秒数
+            shengyuD = parseInt(shenyu / (60 * 60 * 24 * 1000)),//转换为天
+            D = parseInt(shenyu) - parseInt(shengyuD * 60 * 60 * 24 * 1000),//除去天的毫秒数
+            shengyuH = parseInt(D / (60 * 60 * 1000)),//除去天的毫秒数转换成小时
+            H = D - shengyuH * 60 * 60 * 1000,//除去天、小时的毫秒数
+            shengyuM = parseInt(H / (60 * 1000)),//除去天的毫秒数转换成分钟
+            M = H - shengyuM * 60 * 1000;//除去天、小时、分的毫秒数
+        S = parseInt((shenyu - shengyuD * 60 * 60 * 24 * 1000 - shengyuH * 60 * 60 * 1000 - shengyuM * 60 * 1000) / 1000)//除去天、小时、分的毫秒数转化为秒
+        document.getElementById("countdownDays").innerHTML = shengyuD;
+        document.getElementById("countdownHours").innerHTML = shengyuH;
+        document.getElementById("countdownMinutes").innerHTML = shengyuM;
+        document.getElementById("countdownSeconds").innerHTML = S;
+        // setTimeout("clock()",500);
+        setTimeout(countdown, 500);
+    }
+    countdown()
+
+</script>
+
+
+</html>

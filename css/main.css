@@ -1,0 +1,483 @@
+
+body {
+    padding: 0;
+    margin: 0;
+    /* font-family: "MiLan"; */
+}
+.bottom{
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+}
+a {
+    text-decoration: none !important;
+    color: #000;
+}
+
+a:active {
+    background-color: #000;
+    color: #fff;
+
+}
+
+.first-row {
+    width: 100%;
+    background: #fff;
+    /* height: 380px; */
+}
+
+.expand-btn {
+    border: none;
+    background: none;
+    position: absolute;
+    right: 20px;
+    margin-top: 10px;
+}
+
+.expand-btn:active {
+    /* border: 5px solid #fff; */
+    background: #aaa;
+    position: absolute;
+    right: 10px;
+}
+
+.expand-icon {
+    width: 30px;
+    padding-top: 5px;
+}
+
+.second-row {
+    margin: 40px 0;
+    width: 100%;
+    /* margin-bottom: 40px; */
+}
+
+.second-row-container {
+    margin: 0 40px;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px #222 solid;
+}
+
+.padding {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.button-text {
+    width: 20px;
+    height: 70px;
+    line-height: 70px;
+    font-size: 25px;
+    text-decoration: none;
+}
+
+.link-block {
+    outline: 1px solid black;
+    width: 50%;
+    height: 150px;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    float: left;
+}
+
+.padding {
+    /* background: #aaa; */
+    height: 70px;
+    width: 70%;
+    margin: 40px auto;
+}
+
+.icon-wx {
+    width: 50px;
+    display: block;
+    float: left;
+    margin: 10px 5px;
+}
+
+.icon-reabble {
+    width: 40px;
+    display: block;
+    float: left;
+    margin: 15px 15px;
+}
+
+.icon-volmoe {
+    width: 190px;
+}
+
+.tomato {
+    clear: both;
+}
+
+.right {
+    margin: 29px 10px;
+    /* float:left; */
+    width: 40%;
+    height: 100%;
+    /* background: #000; */
+}
+
+.block {
+    display: block;
+}
+
+.calendar {
+    /* font-weight: 100; */
+    font-family:
+        /* Mitype2018-90, */
+        /* Politica, */
+        /* numFont, */
+        /* DINOT-Light, */
+        Bahnschrift,
+        Helvetica,
+        Futura;
+    /* STHeitiTC; */
+    width: 100%;
+    /* font-weight: 800; */
+    /* background: #555; */
+    margin: 50px 0 0 0;
+}
+.year-content,
+.month-content,
+.time-content {
+    font-size: 30px;
+    /* background: #aaa; */
+    text-align: center;
+    margin: auto;
+}
+.day-content {
+    text-align: center;
+    height: 100%;
+    /* float:left; */
+    font-size: 220px;
+    margin: auto;
+    font-family:
+        /* DINOT-Light, */
+        Bahnschrift,
+        /* Mitype2018-90, */
+        numFont,
+        /* Politica, */
+        Bookerly,
+        Palatino,
+        Caecilia;
+    line-height: 200px;
+    margin-top: 30px;
+}
+
+
+.week-content{
+    font-family: Bookerly,
+    QKB,
+    STYuan,
+    STKai,
+    STSong;
+    line-height: 70px;
+    font-size: 40px;
+    text-align: center;
+    margin: auto;
+}
+.time-content {
+    font-size: 30px;
+    /* position: absolute; */
+    /* right: 30px; */
+    top: 0px;
+    margin: auto;
+
+    /* position: static; */
+    right:0;
+    display: none;
+}
+
+.time-content #localtime {
+    font-family: numFont, Bahnschrift, Futura;
+    /* line-height: 40px; */
+    /* font-size: 60px; */
+    /* float: right; */
+    padding-left: 10px;
+    
+    float: none;
+    font-size: 220px;
+    line-height: 200px;
+}
+
+.time-content #apm {
+    /* float: left; */
+    /* font-size: 20px; */
+    /* line-height: 65px; */
+
+    float: none;
+    font-family: Bookerly,
+    QKB,
+    STYuan,
+    STKai,
+    STSong;
+    font-size: 40px;
+    padding-top: 30px;
+}
+
+
+/* 一言 */
+.hitokoto-container {
+    width: 100%;
+    height: auto;
+    padding: 50px 0;
+
+}
+
+.hitokoto-border {
+    margin: 0 40px;
+    padding: 50px 10px;
+    border: 2px #222 solid;
+    border-radius: 20px;
+}
+
+.hitokoto-container #hitokoto {
+
+    font-family: Bookerly,
+    QKB,
+    STYuan,
+    STKai,
+    STSong;
+    font-size: 30px;
+    text-align: center;
+    height: 100px;
+    line-height: 40px;
+    vertical-align: middle;
+}
+
+.hitokoto-container #from {
+    /* width: 100%; */
+    text-align: right;
+    padding-right: 30px;
+}
+
+/* 微博热搜 */
+.weibo_container {
+    text-align: center;
+    /* height: 20%; */
+    /* margin: 1.25rem; */
+    font-size: 1.2rem;
+    margin: 40px 0 0 0;
+}
+
+ul {
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.weibo_title {
+    font-family: QKB;
+    padding-bottom: 0.5rem;
+}
+
+.hot_list {
+    margin: 0 40px;
+    padding: 20px 0;
+    border: 2px #222 solid;
+    border-radius: 20px;
+
+}
+
+#hot_word,
+#hot_word_num {
+    display: inline-block;
+}
+
+#hot_word {
+    font-family: Bahnschrift,
+        QKB;
+    text-align: left;
+    margin-right: 1rem;
+    max-width: 17rem;
+    line-height: 2rem;
+}
+
+#hot_word_num {
+    font-family: numFont, Bahnschrift;
+    width: auto;
+    text-align: right;
+    line-height: 2rem;
+
+}
+
+#hot_word li,
+#hot_word_num {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.weibo-hot-QR {
+    padding: 50px 0;
+    width: 100px;
+}
+
+/* 天气 */
+.weather_container {
+    padding: 5px 50px 20px 50px;
+    height: 40%;
+    text-align: center;
+    /* padding-bottom: 20px; */
+    margin: auto;
+}
+
+/* #weaTitle {
+    font-family: QKB;
+    font-size: 1.2rem;
+
+} */
+
+/* #weaImg {
+    display: inline-block;
+    margin-right: 2.5rem;
+}
+
+.iconfont {
+    font-size: 7.5rem;
+    width: 7.5rem;
+}
+
+#weaTemp {
+    display: inline-block;
+    margin-right: 2.5rem;
+}
+
+.tempNum {
+    display: inline-block;
+    font-size: 6.875rem;
+}
+
+.symbol {
+    display: inline-block;
+    font-size: 3rem;
+}
+
+#weaInfo {
+    display: inline-block;
+    font-size: 1rem;
+    line-height: 1.5rem;
+} */
+.weather-border {
+    /* padding: 0 50px !important; */
+    /* width: 100%; */
+}
+
+#he-plugin-standard {
+    margin-top:20px!important;
+    padding: 10px 0 !important;
+    height: 13rem !important;
+    width: 100% !important;
+    border-radius: 20px !important;
+    border: 2px #222 solid;
+    background: #fff!important;
+}
+
+.wv-lt-col-5 {
+    display: none !important;
+}
+
+.wv-lt-col-7,
+.wv-lt-location {
+    width: 100% !important;
+    text-align: center !important;
+
+}
+
+.wv-lt-location>span {
+    font-size: 1.3rem !important;
+}
+
+.wv-lt-col-7>div>a {
+    display: none !important;
+}
+
+.wv-n-h-now-txt>span {
+    font-size: 1.5rem !important;
+    font-family: QKB !important;
+}
+
+.wv-n-h-now-tmp>span {
+    font-size: 4rem !important;
+    font-family: Bahnschrift, Mitype2018-90  !important;
+}
+.wv-v-h-col-left>div{
+    height: auto!important;
+}
+.wv-n-h-now-content {
+    width: 50% !important;
+}
+
+.wv-n-h-now-img {
+
+    text-align: right;
+    width: 50% !important;
+
+}
+
+.wv-n-h-now-img>img {
+    width: 6rem !important;
+}
+#he-plugin-standard>div>div.wv-v-h-col-left{
+      width: 100%!important;
+}
+.wv-n-h-now-txt>div>div{
+    display: none!important;
+}
+.wv-n-h-now-tmp>div{
+    /* float: right !important; */
+}
+.wv-n-h-now-tmp>div>span{
+    padding: 0 5px;
+    font-size: 1.5rem !important;
+    background: #333;
+    color: #fff !important;
+    border-radius: 5px;
+    /* border: 1px #000 solid; */
+}
+.wv-n-h-now-txt>div>span::before{
+    content: "·";
+}
+.wv-n-h-now-txt>div>span{
+    font-size: 1.5rem !important;
+    font-family: QKB !important;
+    color: #222 !important;
+    /* padding: 0 5px;
+    font-size: 1.5rem !important;
+    background: #333;
+    color: #fff!important;
+    border-radius: 5px; */
+    /* border: 1px #000 solid; */
+}
+.wv-n-h-now-txt>div{
+    float: left !important;
+    /* float: initial !important; */
+}
+.wv-n-h-now-txt>span{
+    float: left !important;
+
+}
+.wv-n-h-now-rain{
+    text-align: center !important;
+    margin: auto !important;
+    padding: 20px 0;
+    float: initial !important;
+    position: relative !important;
+}
+.wv-n-h-now-rain>span{
+    font-size: 1.1rem!important;
+}
+.wv-n-h-now-rain>a>img{
+    width: 1.6rem!important;
+}
+
+/* 单向历 */
+#oneWayUrl>div>span{
+    font-family:STSong,QKB;
+    font-size: 40px;
+
+}
